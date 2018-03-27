@@ -2,3 +2,4 @@
 !.gitignore
 !.zshrc
 !.spacemacs
+!toggle_window.sh
