@@ -3,3 +3,7 @@
 !.zshrc
 !.spacemacs
 !toggle_window.sh
+
+!.config/
+!.config/sxhkd/
+!.config/sxhkd/sxhkdrc
