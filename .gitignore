@@ -5,5 +5,9 @@
 !toggle_window.sh
 
 !.config/
+
 !.config/sxhkd/
 !.config/sxhkd/sxhkdrc
+
+!.config/compton/
+!.config/compton/compton.conf
