@@ -11,3 +11,6 @@
 
 !.config/compton/
 !.config/compton/compton.conf
+
+!.config/dunst/
+!.config/dunst/dunstrc
