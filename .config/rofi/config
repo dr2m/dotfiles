@@ -1,0 +1,8 @@
+rofi.color-enabled: true
+rofi.color-window: argb:afb72350, #b72350, #b72350
+rofi.color-normal: argb:00000000, #ffffff, argb:00000000, argb:002f343f, #91f6f7
+rofi.color-active: argb:00ffffff, #ffffff, argb:00ffffff, argb:00000000, #92f6f7
+rofi.color-urgent: argb:00000000, #000000, argb:00000000, argb:00000000, #ff0000
+rofi.font: Fira Code 20
+!rofi.separator-style: solid
+rofi.hide-scrollbar: true

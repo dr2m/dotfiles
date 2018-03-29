@@ -16,3 +16,6 @@
 !.config/dunst/dunstrc
 
 !.config/konsolerc
+
+!.config/rofi/
+!.config/rofi/config
