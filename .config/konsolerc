@@ -1,0 +1,24 @@
+[Desktop Entry]
+DefaultProfile=Профиль 1.profile
+
+[Favorite Profiles]
+Favorites=
+
+[KonsoleWindow]
+ShowMenuBarByDefault=false
+
+[MainWindow]
+Height 1080=720
+Height 2560=600
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAA4QAAAJEAAAABAAAAAQAAAAIAAAACPwAAAAA
+ToolBarsMovable=Disabled
+Width 1080=900
+Width 1920=1280
+Width 2560=900
+
+[Shortcut Schemes]
+Current Scheme=Default
+
+[TabBar]
+TabBarVisibility=ShowTabBarWhenNeeded
