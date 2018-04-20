@@ -64,6 +64,7 @@ plugins=(
     extract
     ubuntu
     osx
+    dotenv
 )
 
 source $ZSH/oh-my-zsh.sh
