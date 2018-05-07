@@ -1,14 +1,25 @@
 #! /bin/sh
+if [ ! -z $STUPID_MAC ]; then ~/set_display_resolution.sh Virtual1 2880 1800; fi
 
 setxkbmap -option grp:alt_shift_toggle -option ctrl:nocaps -layout us,ru
+if [ ! -z $STUPID_MAC ]; then setxkbmap -option altwin:swap_alt_win; fi
 xrandr --output HDMI1 --off --output eDP1 --auto --primary
 xrandr --dpi 128
-export CHROMIUM_USER_FLAGS="--force-device-scale-factor=1.25"
+
+if [ -z $STUPID_MAC ]; then
+  export CHROMIUM_USER_FLAGS="--force-device-scale-factor=1.25"
+else
+  export CHROMIUM_USER_FLAGS="--force-device-scale-factor=2"
+fi
+
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+if [ -z $STUPID_MAC ]; then rectangle=1280x720; else rectangle=1920x1080; fi
+if [ -z $STUPID_MAC ]; then window_gap=7; else window_gap=18; fi
+if [ -z $STUPID_MAC ]; then border_width=3; else border_width=6; fi
 
-bspc config border_width         3
-bspc config window_gap           7
+bspc config border_width $border_width
+bspc config window_gap $window_gap
 
 bspc config split_ratio          0.44
 bspc config borderless_monocle   false
@@ -20,13 +31,13 @@ bspc config remove_disabled_monitors true
 
 bspc monitor -d 1 2 3 4 5 6 7 8
 
-bspc rule -a Gnome-terminal state=floating hidden=on sticky=on rectangle=1280x720+0+0 center=on
+bspc rule -a Gnome-terminal state=floating hidden=on sticky=on rectangle=$rectangle+0+0 center=on
 bspc rule -a Chromium-browser desktop='1'
 bspc rule -a Slack desktop='2'
 bspc rule -a Atom desktop='3'
 bspc rule -a Emacs desktop='3'
 bspc rule -a Thunderbird desktop='4'
-bspc rule -a TelegramDesktop state=floating sticky=on hidden=on rectangle=1280x720+0+0 center=on
+bspc rule -a TelegramDesktop state=floating sticky=on hidden=on rectangle=$rectangle+0+0 center=on
 
 bspc config normal_border_color '#5a253c'
 bspc config focused_border_color '#b72350'
@@ -34,11 +45,11 @@ bspc config focused_border_color '#b72350'
 sxhkd &
 compton --config "$HOME/.config/compton/compton.conf" -b --respect-prop-shadow &
 feh --bg-fill ~/.wallpaper/all_night_long.jpg
-xautolock -time 5 -locker "i3lock -i -f --color 000000" &
-polybar main &
 dunst &
 chromium-browser &
 gnome-terminal --hide-menubar --profile='Tomorrow Night'
 slack &
 thunderbird &
-$HOME/bin/telegram
+$HOME/bin/telegram &
+if [ ! -z $STUPID_MAC ]; then xautolock -time 5 -locker "i3lock -i -f --color 000000"; fi
+if [ -z $STUPID_MAC ]; then polybar main; else polybar main -c ~/.config/polybar/config_stupid_mac; fi
