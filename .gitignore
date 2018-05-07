@@ -22,6 +22,7 @@
 
 !.config/polybar/
 !.config/polybar/config
+!.config/polybar/config_stupid_mac
 
 !.config/bspwm/
 !.config/bspwm/bspwmrc
