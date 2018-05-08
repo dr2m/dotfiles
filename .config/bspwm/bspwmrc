@@ -21,23 +21,23 @@ if [ -z $STUPID_MAC ]; then border_width=3; else border_width=6; fi
 bspc config border_width $border_width
 bspc config window_gap $window_gap
 
-bspc config split_ratio          0.44
-bspc config borderless_monocle   false
-bspc config gapless_monocle      false
-bspc config focus_follows_pointer true
-bspc config focus_by_distance true
+bspc config split_ratio               0.44
+bspc config borderless_monocle        false
+bspc config gapless_monocle           false
+bspc config focus_follows_pointer     true
+bspc config focus_by_distance         true
 bspc config remove_unplugged_monitors true
-bspc config remove_disabled_monitors true
+bspc config remove_disabled_monitors  true
 
 bspc monitor -d 1 2 3 4 5 6 7 8
 
 bspc rule -a Gnome-terminal state=floating hidden=on sticky=on rectangle=$rectangle+0+0 center=on
-bspc rule -a Chromium-browser desktop='1'
-bspc rule -a Slack desktop='2'
-bspc rule -a Atom desktop='3'
-bspc rule -a Emacs desktop='3'
-bspc rule -a Thunderbird desktop='4'
 bspc rule -a TelegramDesktop state=floating sticky=on hidden=on rectangle=$rectangle+0+0 center=on
+bspc rule -a Chromium-browser desktop='1'
+bspc rule -a Emacs desktop='2' state=tiled
+bspc rule -a Thunderbird desktop='3'
+#bspc rule -a Slack desktop='2'
+#bspc rule -a Atom desktop='3'
 
 bspc config normal_border_color '#5a253c'
 bspc config focused_border_color '#b72350'
@@ -47,9 +47,10 @@ compton --config "$HOME/.config/compton/compton.conf" -b --respect-prop-shadow &
 feh --bg-fill ~/.wallpaper/all_night_long.jpg
 dunst &
 chromium-browser &
-gnome-terminal --hide-menubar --profile='Tomorrow Night'
-slack &
+gnome-terminal --hide-menubar --profile='Tomorrow Night' &
+# slack &
 thunderbird &
+emacs &
 $HOME/bin/telegram &
 if [ ! -z $STUPID_MAC ]; then xautolock -time 5 -locker "i3lock -i -f --color 000000"; fi
 if [ -z $STUPID_MAC ]; then polybar main; else polybar main -c ~/.config/polybar/config_stupid_mac; fi
